@@ -130,11 +130,14 @@ cancelUpdateTweetCounter();
 
 /* behavior ---------------------------------------------------- */
 $(document).ready(function() {
+  // Set up helper functions
+  var clearWall = function() {
+    $('#tweetWall').html('');
+  };
+
   // Define parent class
-  var masterBird = {
-    clearWall: function() {
-      $('#tweetWall').html('');
-    },
+  var MasterBird = {
+    clearWall: clearWall,
 
     tweetToWall: function() {
       var source = this.sourceStream;
@@ -220,10 +223,10 @@ $(document).ready(function() {
   };
 
   // Define child classes
-  var userBird = Object.create(masterBird);
+  var userBird = Object.create(MasterBird);
   userBird.sourceStream = streams.home;
 
-  var visitorBird = Object.create(masterBird);
+  var visitorBird = Object.create(MasterBird);
   streams.users.visitor = [];
   visitorBird.sourceStream = streams.users.visitor;
 
