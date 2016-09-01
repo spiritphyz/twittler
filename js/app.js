@@ -232,24 +232,24 @@ $(document).ready(function() {
   userBird.printAllTweets();
 
   // Refresh new tweets counter
-  $('#tweetCounter').on('click', '#liveCounter', function(event) {
-    event.preventDefault();
+  $('#tweetCounter').on('click', '#liveCounter', function(ele) {
+    ele.preventDefault();
     userBird.sourceStream = streams.home;
     userBird.printAllTweets(counter.lastPosition);
     $('#liveCounter').html('');
   });
 
   // Show tweets only from one user
-  $('#tweetWall').on('click', '.username', function(event) {
-    event.preventDefault();
+  $('#tweetWall').on('click', '.username', function(ele) {
+    ele.preventDefault();
     userBird.sourceStream = streams.users[ $(this).attr('user') ];
     userBird.clearWall();
     userBird.printAllTweets();
   });
 
   // Add tweets from all users
-  $('#updateAllOnHeadline').on('click', function(event) {
-    event.preventDefault();
+  $('#updateAllOnHeadline').on('click', function(ele) {
+    ele.preventDefault();
     userBird.sourceStream = streams.home;
     $('#liveCounter').html('');
     userBird.clearWall();
@@ -257,14 +257,14 @@ $(document).ready(function() {
   });
 
   // Add tweets from visitor
-  $('#postButton').on('click', function(event) {
+  $('#postButton').on('click', function(ele) {
     var tweet = {};
     tweet.user = 'visitor';
     tweet.message = $('#inputField').val();
     tweet.created_at = new Date();
     addTweet(tweet);
 
-    event.preventDefault();
+    ele.preventDefault();
     visitorBird.tweetObj = streams.users.visitor[
       streams.users.visitor.length - 1
     ];
@@ -273,8 +273,8 @@ $(document).ready(function() {
   });
 
   // Clear input field
-  $('#inputField').on('click', function(event) {
-    event.preventDefault();
+  $('#inputField').on('click', function(ele) {
+    ele.preventDefault();
     $(this).val('');
   });
 });
