@@ -139,8 +139,7 @@ $(document).ready(function() {
     var source = this.sourceStream;
     var tweet = this.tweetObj;
     var $tweetMsg;
-    var $user;
-    var $userPic;
+    var $user, $userPic;
     var $tweetTime, relativeTime;
     var $tweetSection, $leftDiv, $rightDiv;
 
@@ -199,25 +198,26 @@ $(document).ready(function() {
     $tweetSection.hide();
     $tweetSection.append($rightDiv);
     $tweetSection.fadeIn(800);
-    };
+  };
+
+  var printAllTweets = function(start, finish) {
+    // Since tweetToWall() adds tweets at the top position,
+    // this effectively shows tweets in reverse chronological order.
+    var source = this.sourceStream;
+    start = start || 0;
+    finish = finish || source.length;
+
+    for (var i = start; i < finish; i += 1) {
+      this.tweetObj = source[i];
+      this.tweetToWall();
+    }
+  };
 
   // Define parent class
   var MasterBird = {
     clearWall: clearWall,
     tweetToWall: tweetToWall,
-
-    printAllTweets: function(start, finish) {
-      // Since tweetToWall() adds tweets at the top position,
-      // this effectively shows tweets in reverse chronological order.
-      var source = this.sourceStream;
-      start = start || 0;
-      finish = finish || source.length;
-
-      for (var i = start; i < finish; i++) {
-        this.tweetObj = source[i];
-        this.tweetToWall();
-      }
-    }
+    printAllTweets: printAllTweets
   };
 
   // Define child classes
