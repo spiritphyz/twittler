@@ -135,78 +135,76 @@ $(document).ready(function() {
     $('#tweetWall').html('');
   };
 
+  var tweetToWall = function() {
+    var source = this.sourceStream;
+    var tweet = this.tweetObj;
+    var $tweetMsg;
+    var $user;
+    var $userPic;
+    var $tweetTime, relativeTime;
+    var $tweetSection, $leftDiv, $rightDiv;
+
+    // Print section at top of wall
+    $tweetSection = $('<section></section>');
+    $tweetSection.addClass('tweetContainer');
+    $('#tweetWall').prepend($tweetSection);
+
+    // Create left column
+    $leftDiv = $('<div></div>');
+    $leftDiv.addClass('left');
+
+    // Print user picture
+    $userPic = $('<canvas></canvas>');
+    $userPic.addClass('userPic');
+    $userPic.attr({
+      'width': '90',
+      'height': '90'
+    });
+    $userPic.jdenticon( md5(tweet.user) );
+    $leftDiv.append($userPic);
+    $leftDiv.append('<br />');
+
+    // Print user
+    $user = $('<a></a>');
+    $user.attr({
+      'href': '#',
+      'user': tweet.user,
+      'class': 'username'
+    });
+    $user.text('@' + tweet.user);
+    $leftDiv.append($user);
+
+    // Print posting date
+    relativeTime = moment(tweet.created_at).fromNow();
+    $tweetTime = $('<p></p>');
+    $tweetTime.addClass('date');
+    $tweetTime.text(relativeTime);
+    $leftDiv.append($tweetTime);
+
+    $tweetSection.append($leftDiv);
+
+    // Create right column
+    $rightDiv = $('<div></div>');
+    $rightDiv.addClass('right');
+
+    // Print message
+    $tweetMsg = $('<div></div>');
+    $tweetMsg.text(tweet.message);
+    $tweetMsg.addClass('tweetMessage');
+    $rightDiv.append($tweetMsg);
+
+    // Update counter's last position
+    counter.lastPosition = streams.home.length;
+
+    $tweetSection.hide();
+    $tweetSection.append($rightDiv);
+    $tweetSection.fadeIn(800);
+    };
+
   // Define parent class
   var MasterBird = {
     clearWall: clearWall,
-
-    tweetToWall: function() {
-      var source = this.sourceStream;
-      var tweet = this.tweetObj;
-      var $tweetMsg;
-      var $user;
-      var $userPic;
-      var $tweetTime;
-      var relativeTime;
-      var $tweetSection;
-      var $leftDiv;
-      var $rightDiv;
-
-      // Print section at top of wall
-      $tweetSection = $('<section></section>');
-      $tweetSection.addClass('tweetContainer');
-      $('#tweetWall').prepend($tweetSection);
-
-      // Create left column
-      $leftDiv = $('<div></div>');
-      $leftDiv.addClass('left');
-
-      // Print user picture
-      $userPic = $('<canvas></canvas>');
-      $userPic.addClass('userPic');
-      $userPic.attr({
-        'width': '90',
-        'height': '90'
-      });
-      $userPic.jdenticon( md5(tweet.user) );
-      $leftDiv.append($userPic);
-      $leftDiv.append('<br />');
-
-      // Print user
-      $user = $('<a></a>');
-      $user.attr({
-        'href': '#',
-        'user': tweet.user,
-        'class': 'username'
-      });
-      $user.text('@' + tweet.user);
-      $leftDiv.append($user);
-
-      // Print posting date
-      relativeTime = moment(tweet.created_at).fromNow();
-      $tweetTime = $('<p></p>');
-      $tweetTime.addClass('date');
-      $tweetTime.text(relativeTime);
-      $leftDiv.append($tweetTime);
-
-      $tweetSection.append($leftDiv);
-
-      // Create right column
-      $rightDiv = $('<div></div>');
-      $rightDiv.addClass('right');
-
-      // Print message
-      $tweetMsg = $('<div></div>');
-      $tweetMsg.text(tweet.message);
-      $tweetMsg.addClass('tweetMessage');
-      $rightDiv.append($tweetMsg);
-
-      // Update counter's last position
-      counter.lastPosition = streams.home.length;
-
-      $tweetSection.hide();
-      $tweetSection.append($rightDiv);
-      $tweetSection.fadeIn(800);
-    },
+    tweetToWall: tweetToWall,
 
     printAllTweets: function(start, finish) {
       // Since tweetToWall() adds tweets at the top position,
