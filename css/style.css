@@ -1,0 +1,154 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  color: #437bae;
+  text-decoration: none;
+}
+
+#headline {
+  color: #437bae;
+  font: bold 100%/125%;
+  padding-left: 35px;
+}
+
+.hr {
+  background: #d3d3d3;
+  border: 0px;
+  height: 1px;
+  margin: 15px 0px 40px 0px;
+}
+
+#guestTweetBox {
+  background-color: #437bae;
+  color: #fff;
+  font-size: 180%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 9px 0px;
+  text-align: center;
+  width: 80%;
+}
+
+#guestTweetBox section {
+  margin: auto;
+  position: relative;
+  width: 100%;
+}
+
+#guestTweetBox section .left {
+  float: left;
+  font-size: 90%;
+  height: 50px;
+  letter-spacing: 0.5px;
+  margin-top: -16.67px;
+  padding: 0px 0px 0px 10px;
+  position: absolute;
+  text-align: left;
+  top: 50%;
+  width: 24%;
+}
+
+#guestTweetBox section .right {
+  margin-left: 24%;
+  padding: 0px 0px 0px 0px;
+  top: 50%;
+}
+
+#inputField {
+  border: 0px none;
+  color: #999;
+  font-size: 90%;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0px;
+  padding: 5px 20px 5px 5px;
+}
+
+#inputField:focus {
+  color: #000;
+}
+
+#mainContent {
+  background-color: #f5f5f5;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#tweetCounter {
+  height: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+#tweetCounter a {
+  border-bottom: 2.9px dashed;
+  font-size: 110%;
+}
+
+#postButton {
+  background-color: #48d084;
+  border: 0px none;
+  color: #fff;
+  font-size: 90%;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  padding: 5px 40px;
+  transition: all 0.2s ease 0s;
+}
+
+#postButton:hover {
+  background-color: #5de193;
+}
+
+section.tweetContainer {
+  height: 150px;
+  margin: auto;
+  padding: 10px;
+  position: relative;
+  width: 94%;
+}
+
+section.tweetContainer div.left {
+  float: left;
+  font-size: 80%;
+  height: 145px;
+  margin-top: 0px;
+  text-align: center;
+  top: 0%;
+  width: 24%;
+}
+
+section.tweetContainer div.right {
+  background-color: #fff;
+  font-size: 150%;
+  height: 145px;
+  margin-left: 24%;
+  margin-top: 0px;
+  padding: 0px 0px 0px 7px;
+  top: 0%;
+}
+
+.userPic {
+  background-color: #fff;
+  margin: 0px 0px 5px 0px;
+}
+
+.username {
+  font-size: 112%;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.date {
+  color: #93c5ef;
+}
+
+.tweetMessage {
+  padding-top: 7px;
+}
