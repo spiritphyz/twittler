@@ -46,26 +46,6 @@ for(var i = 0; i < 10; i++){
   generateRandomTweet();
 }
 
-// Redefined in timers.js to capture timer ID
-// var scheduleNextTweet = function(){
-//   generateRandomTweet();
-//   $('body').append('generated a tweet<br />');
-//   setTimeout(scheduleNextTweet, Math.random() * 5000);
-// };
-// scheduleNextTweet();
-
-// utility function for letting students add "write a tweet" functionality
-// (note: not used by the rest of this file.)
-var writeTweet = function(message){
-  if(!visitor){
-    throw new Error('set the global visitor property!');
-  }
-  var tweet = {};
-  tweet.user = visitor;
-  tweet.message = message;
-  addTweet(tweet);
-};
-
 /** timers ----------------------------------------------------- */
 var generateRandomTweetTimeoutID;
 var updateTweetCounterID;
