@@ -49,16 +49,8 @@ for(var i = 0; i < 10; i++){
 /** timers ----------------------------------------------------- */
 var generateRandomTweetTimeoutID;
 var updateTweetCounterID;
-
-var counter = function(lastPosition) {
-  return {
-    get function() {
-      return lastPosition;
-    },
-    set function(newPosition) {
-      lastPosition = newPosition;
-    }
-  };
+var counter = {
+  lastPosition: undefined
 };
 
 var updateTweetCounter = function() {
@@ -202,10 +194,9 @@ $(document).ready(function() {
   };
 
   // Define subclasses
-  var userBird = MasterBird();
-
   streams.users.visitor = [];
   var visitorBird = MasterBird(streams.users.visitor);
+  var userBird = MasterBird();
 
   // Print first wall of tweets
   userBird.printAllTweets();
